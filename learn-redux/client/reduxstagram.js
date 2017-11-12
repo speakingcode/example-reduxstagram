@@ -1,35 +1,40 @@
-import React      from 'react'
-import { render } from 'react-dom'
+import React            from 'react'
+import { render }       from 'react-dom'
+import { Provider }     from 'react-redux'
 
 import {
   Router,
   Route,
   IndexRoute,
   browserHistory
-}                 from 'react-router'
+}                       from 'react-router'
 
-import Main       from './components/Main'
-import Single     from './components/Single'
-import PhotoGrid  from './components/PhotoGrid'
+import store, { history } from './store'
 
-import css        from './styles/style.styl'
+import Main             from './components/Main'
+import Single           from './components/Single'
+import PhotoGrid        from './components/PhotoGrid'
+
+import css              from './styles/style.styl'
 
 const router = (
-  <Router history={browserHistory}>
-    <Route
-      path="/"
-      component={Main}
-    >
-      <IndexRoute
-        component={PhotoGrid}
-      >
-      </IndexRoute>
+  <Provider store={store}>
+    <Router history={history}>
       <Route
-        path="/view/:postId"
-        component={Single}>
+        path="/"
+        component={Main}
+      >
+        <IndexRoute
+          component={PhotoGrid}
+        >
+        </IndexRoute>
+        <Route
+          path="/view/:postId"
+          component={Single}>
+        </Route>
       </Route>
-    </Route>
-  </Router>
+    </Router>
+  </Provider>
 )
 
 render(
