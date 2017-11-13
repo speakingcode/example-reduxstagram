@@ -11,7 +11,7 @@ import {
 
 import store, { history } from './store'
 
-import Main             from './components/Main'
+import App              from './components/App'
 import Single           from './components/Single'
 import PhotoGrid        from './components/PhotoGrid'
 
@@ -22,7 +22,7 @@ const router = (
     <Router history={history}>
       <Route
         path="/"
-        component={Main}
+        component={App}
       >
         <IndexRoute
           component={PhotoGrid}
