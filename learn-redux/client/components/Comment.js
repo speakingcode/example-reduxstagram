@@ -3,8 +3,14 @@ import React from 'react'
 const Comments = React.createClass({
   handleSubmit(event) {
     event.preventDefault()
-    console.log("submitting form")
+
+    let { postId } = this.props.params
+    let author     = this.refs.author.value
+    let comment    = this.refs.comment.value
+
+    this.props.addComment(postId, author, comment)
   },
+
   renderComment(comment, index) {
     return(
       <div className="comment" key={index}>
@@ -16,6 +22,7 @@ const Comments = React.createClass({
       </div>
     )
   },
+
   render() {
     return(
       <div className="comments">
